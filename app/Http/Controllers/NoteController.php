@@ -84,7 +84,7 @@ class NoteController extends Controller
 
         $note->update($validated_data);
 
-        return redirect()->route('notes.index');
+        return redirect()->route('notes.index')->with('success','Note has been updated!');
     }
 
     /**
@@ -97,6 +97,6 @@ class NoteController extends Controller
         }
 
         $note->delete();
-        return back();
+        return back()->with('success','Note has been deleted!');
     }
 }
