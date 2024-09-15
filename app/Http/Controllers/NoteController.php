@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NoteController extends Controller
 {
@@ -13,7 +14,7 @@ class NoteController extends Controller
     public function index()
     {
         //
-        $notes = Note::all();
+        $notes = Note::where('user_id',Auth::id())->orderBy('updated_at','desc')->get();
         return view('note.index',compact('notes'));
     }
 
