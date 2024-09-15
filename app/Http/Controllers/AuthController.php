@@ -21,10 +21,18 @@ class AuthController extends Controller
         ]);
 
         if(Auth::attempt($credentials)){
+
+            $request->session()->regenerate();
             return redirect()->route('notes.index');
         }
         
         return back();
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        return redirect('/');
     }
 
     public function getRegisterPage(){
