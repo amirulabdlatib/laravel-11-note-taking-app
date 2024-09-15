@@ -1,3 +1,3 @@
 <x-layout>
-    Index page
+    Welcome {{ auth()->user()->name }}
 </x-layout>
