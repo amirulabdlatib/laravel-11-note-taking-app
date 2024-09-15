@@ -51,6 +51,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
+                                            onclick="return confirm('Are you sure to delete?')"
                                             class="text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition duration-300 ease-in-out">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
