@@ -14,8 +14,8 @@ class NoteController extends Controller
     public function index()
     {
         //
-        $notes = Note::where('user_id',Auth::id())->orderBy('updated_at','desc')->get();
-        return view('note.index',compact('notes'));
+        $notes = Note::where('user_id', Auth::id())->orderBy('updated_at', 'desc')->get();
+        return view('note.index', compact('notes'));
     }
 
     /**
@@ -34,14 +34,14 @@ class NoteController extends Controller
     {
         //
         $validated_data = $request->validate([
-            'title'=>'required|string',
-            'description'=>'required'
+            'title' => 'required|string',
+            'description' => 'required',
         ]);
 
         Note::create([
-            'user_id'=>Auth::id(),
-            'title'=>$validated_data['title'],
-            'description'=>$validated_data['description']
+            'user_id' => Auth::id(),
+            'title' => $validated_data['title'],
+            'description' => $validated_data['description'],
         ]);
 
         return redirect()->route('notes.index');
@@ -54,7 +54,7 @@ class NoteController extends Controller
     {
         //
         $note = Note::findorFail($id);
-        return view('note.show',compact('note'));
+        return view('note.show', compact('note'));
     }
 
     /**
@@ -63,7 +63,7 @@ class NoteController extends Controller
     public function edit(Note $note)
     {
         //
-        return view('note.edit',compact('note'));
+        return view('note.edit', compact('note'));
     }
 
     /**
@@ -72,9 +72,14 @@ class NoteController extends Controller
     public function update(Request $request, Note $note)
     {
         //
+
+        if ($note->user_id != Auth::id()) {
+            abort(403);
+        }
+
         $validated_data = $request->validate([
-            'title'=>'required|string',
-            'description'=>'required'
+            'title' => 'required|string',
+            'description' => 'required',
         ]);
 
         $note->update($validated_data);
@@ -87,6 +92,10 @@ class NoteController extends Controller
      */
     public function destroy(Note $note)
     {
+        if ($note->user_id != Auth::id()) {
+            abort(403);
+        }
+
         $note->delete();
         return back();
     }
