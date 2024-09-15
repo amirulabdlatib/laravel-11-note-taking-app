@@ -2,7 +2,7 @@
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
         <div class="container mx-auto px-4 py-8">
             <div class="flex justify-between items-center mb-6">
-                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Your Notes</h1>
+                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">My Notes</h1>
                 <a href="{{ route('notes.create') }}"
                     class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center transition duration-300 ease-in-out">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"

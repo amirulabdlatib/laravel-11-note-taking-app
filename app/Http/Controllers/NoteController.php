@@ -24,6 +24,7 @@ class NoteController extends Controller
     public function create()
     {
         //
+        return view('note.create');
     }
 
     /**
@@ -32,6 +33,18 @@ class NoteController extends Controller
     public function store(Request $request)
     {
         //
+        $validated_data = $request->validate([
+            'title'=>'required|string',
+            'description'=>'required'
+        ]);
+
+        Note::create([
+            'user_id'=>Auth::id(),
+            'title'=>$validated_data['title'],
+            'description'=>$validated_data['description']
+        ]);
+
+        return redirect()->route('notes.index');
     }
 
     /**
