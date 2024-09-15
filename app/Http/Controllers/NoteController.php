@@ -60,17 +60,26 @@ class NoteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Note $note)
     {
         //
+        return view('note.edit',compact('note'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Note $note)
     {
         //
+        $validated_data = $request->validate([
+            'title'=>'required|string',
+            'description'=>'required'
+        ]);
+
+        $note->update($validated_data);
+
+        return redirect()->route('notes.index');
     }
 
     /**
