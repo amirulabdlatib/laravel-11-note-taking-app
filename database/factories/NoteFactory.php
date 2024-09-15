@@ -19,7 +19,7 @@ class NoteFactory extends Factory
         return [
             //
             'user_id'=>rand(1,4),
-            'title'=>fake()->title(),
+            'title'=>fake()->word(3),
             'description'=>fake()->text(),
         ];
     }
