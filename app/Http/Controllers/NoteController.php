@@ -53,6 +53,8 @@ class NoteController extends Controller
     public function show(string $id)
     {
         //
+        $note = Note::findorFail($id);
+        return view('note.show',compact('note'));
     }
 
     /**
