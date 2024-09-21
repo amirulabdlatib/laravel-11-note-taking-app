@@ -20,8 +20,8 @@ A straightforward note-taking application built with Laravel 11, MySQL, and Flow
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/simple-note-app.git
-   cd simple-note-app
+   git clone https://github.com/amirulabdlatib/laravel-11-note-taking-app.git
+   cd laravel-11-note-taking-app
    ```
 
 2. Install PHP dependencies:
